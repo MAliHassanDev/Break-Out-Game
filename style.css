@@ -1,0 +1,136 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+:root{
+     --scoreheader-clr: #095e7a;
+    --body-clr:#003042;
+    --gameBoard-clr: #027313;
+    --boardBorder-clr : #D1D1D1;
+    --heading-clr: #5AC7E3;
+}
+body{
+    height: 100vh;   
+    width: 100vw;
+    background-color: var(--body-clr);
+    display: grid;
+    font-family: "Roboto Condensed", 'Roboto';
+    overflow: hidden;
+}
+.flex-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main{
+    background-color: var(--gameBoard-clr);
+    border-color: var(--boardBorder-clr);
+    border-width: 15px;
+    border-style: solid;
+    min-height: 85vh;
+    min-width: 65vw;
+    border-radius: 4px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    /* box-shadow: inset 15px 15px 5px rgba(0, 0, 0, 0.24); */
+}
+
+
+
+.paddle{
+    height: 2.3rem;
+    width: 13%;
+    background-color: silver;
+    position:absolute;
+    left: 0;
+    bottom: 5rem;
+    border: 2px solid black;
+    border-radius: 6px;
+    left: 43.5%;
+    z-index: 20;
+}
+
+.ball{
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    background-color: var(--heading-clr);
+    border: .5px solid rgba(0, 0, 0, 0.767);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.562);
+    left: 48.85%;
+    bottom: 7.3rem;
+    z-index: 10;
+}
+
+
+.bricks-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    list-style-type: none;
+    width: 100%;
+    height: 25rem;
+    display: grid;
+    grid-template-columns: repeat(12,7.5%);
+    grid-template-rows: repeat(8,25px);
+    z-index: 8;
+    gap: 2px;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.brick{
+    /* background-color: yellowgreen; */
+    border: .5px solid rgba(0, 0, 0, 0.616);
+    border-radius: 4px;
+    transition: opacity .5s ease;
+}
+
+.hidden{
+    z-index: -1;
+    opacity: 0;
+}
+
+
+
+.start-message{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% ,-50%);
+    color: whitesmoke;
+    font-size: 16px;
+    text-align: center;
+    
+}
+.start-message h4{
+    letter-spacing: .5px;
+    margin-top: 1rem;
+    font-weight: 400;
+}
+
+
+
+
+/* ---------- */
+.text{
+    position: absolute;
+    top: 0;
+    left: 40%;
+    font-size: 2rem;
+    color: white;
+}
+
+
+
+
+

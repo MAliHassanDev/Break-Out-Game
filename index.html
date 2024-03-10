@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="author" content="Muhammad Ali Hassan">
+        <meta name="description" content="A simple Break Points Game with Javascript">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <title>Break Points</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <main id="Board" data-board>
+
+            <aside class="start-message" data-startIcon>
+                <img src="img/icons8-left-click-50.png">
+                <h4>Click to Start</h4>
+            </aside>
+
+            <ul data-brickContainer class="bricks-container" id="bricksContainer"></ul>  
+
+            <div data-ball class="ball" id="ball_"></div>
+
+            <div data-paddle class='paddle' id="paddle_"></div>
+
+        </main>
+        <p data-text class="text"></p>
+        <script src="main.js" type="module"></script>
+        <script src="collisionDetection.js" type="module"></script>
+    </body>
+</html>
