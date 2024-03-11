@@ -9,23 +9,21 @@ class CollisionDetection{
             ball.setTopCollide(true);
             ball.setBottomCollide(false);
             paddle.setSideCollide(false)
-        } 
-        
-        if(ball.getPositionX()+ball.getWidth() >= board.getRightWall()) {
+            return true;
+        } else if(ball.getPositionX()+ball.getWidth() >= board.getRightWall()) {
             ball.setRightCollide(true); 
             ball.setLeftCollide(false);
             paddle.setSideCollide(false)
-        }
-
-        if(ball.getPositionX() <= board.getLeftWall()){
+            return true;
+        } else if(ball.getPositionX() <= board.getLeftWall()){
             ball.setLeftCollide(true);
             ball.setRightCollide(false);
             paddle.setSideCollide(false)
+            return true;
         }
     }
 
     withPaddle(){
-        document.querySelector('[data-text]').innerHTML = `ballX ${ball.getPositionX()+ball.getWidth()},  RightWall: ${board.getRightWall()},  boardWidth: ${board.getWidth()}`
         if(ball.getPositionX()+ball.getWidth() >= paddle.getPositionX()  && ball.getPositionX() <= paddle.getPositionX()+paddle.getWidth()
          && ball.getPositionY()+ball.getHeight() >= paddle.getPositionY() && ball.getPositionY()+ball.getHeight() <= paddle.getPositionY()+paddle.getHeight()){
             return true;
@@ -39,7 +37,11 @@ class CollisionDetection{
         }
     }
 
-
+    withFloor(){
+        if(ball.getPositionY() >= board.getBottomWall()+board.getBorder()){
+            return true
+        }
+    }
 }
 
 let collision = new CollisionDetection();

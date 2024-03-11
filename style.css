@@ -1,3 +1,13 @@
+@font-face {
+    font-family:cartoon;
+    src: url('font/Cartooncookies.ttf');
+}
+
+@font-face {
+    font-family: computerBlock;
+    src: url('font/BlockStock.ttf')
+}
+
 *{
     padding: 0;
     margin: 0;
@@ -15,6 +25,7 @@ html{
     --boardBorder-clr : #D1D1D1;
     --heading-clr: #5AC7E3;
 }
+
 body{
     height: 100vh;   
     width: 100vw;
@@ -69,6 +80,7 @@ main{
     left: 48.85%;
     bottom: 7.3rem;
     z-index: 10;
+    transform: translateZ(0);
 }
 
 
@@ -104,19 +116,146 @@ main{
 
 .start-message{
     position: absolute;
-    top: 50%;
+    top: 57%;
     left: 50%;
     transform: translate(-50% ,-50%);
     color: whitesmoke;
     font-size: 16px;
     text-align: center;
     
+    
 }
 .start-message h4{
-    letter-spacing: .5px;
+    letter-spacing: 2px;
     margin-top: 1rem;
-    font-weight: 400;
+    font-weight: 500;
+    font-family: cartoon;
+    font-size: 5rem;
+    transform: rotate(-10deg);
+    animation: textmove 3s ease-in-out infinite;
 }
+.start-message .click-image{
+    transform: translateX(20px);
+    position: relative;
+}
+
+.click-image img{
+    animation: click 1s ease-in-out  infinite forwards alternate;
+}
+
+.score{
+    position:absolute;
+    top: 30px;
+    left: 18%;
+    color: white;
+    font-size: 3.5rem;
+    letter-spacing: 1px;
+    font-family: cartoon;
+    opacity: 0;
+}
+.lives {
+    position: absolute;
+    right: 18%;
+    top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+.lives img{
+    width: 40px;    
+}
+.lives span{
+    font-size: 2.7rem;
+    color: #ADF8DB;
+    font-family: computerBlock;
+    margin-right: 1.5rem;
+    transform: translateY(2px);
+}
+
+
+
+.gameOver_Section{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    transition: all 1s linear;
+    background-color: rgba(0, 0, 0, 0.692);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.gameOver_Container{
+    height: 34%;
+    width: 20%;
+    border-radius: 12px;
+    background-color: #098d7b;;
+    border: 10px solid #ceb6ab;
+    opacity: 1;
+    filter:brightness(90%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.gameOver_Container h2{
+    color: white;
+    font-family: Roboto;
+    font-size: 5rem;
+    letter-spacing: 2px;
+    margin-bottom: 3rem;
+   
+}
+
+.gameOver_Container P:nth-child(2){
+    font-family: cartoon;
+    color: #d1132d;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.gameOver_Container P:nth-child(3){
+    font-family: computerBlock;
+    font-size: 3rem;
+    margin-bottom: 4rem
+}
+
+.gameOver_Container button{
+    padding: 10px 15px;
+    font-size: 2rem;
+    border-radius: 4px;
+    border: none;
+    background-color: rgb(163, 76, 18);
+    color: white;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.gameOver_Container button:active{
+    transform: scale(.9)
+}
+
+.gameOver{
+    display: none;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -133,4 +272,17 @@ main{
 
 
 
+
+
+@keyframes textmove {
+    0%{
+        transform: translateY(0%) rotate(-10deg);
+    }
+    50%{
+        transform: translateY(-20%) rotate(-10deg);
+    }
+    100%{
+        transform: translateY(0%) rotate(-10deg);
+    }
+}
 

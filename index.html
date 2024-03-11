@@ -8,16 +8,17 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <title>Break Points</title>
+        <link rel="icon" href="img/favicon.ico">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
 
+        <p class="score" data-score>Score: <span data-scoreValue>0</span></p>
+        <div class="lives" data-livesWrapper>
+            <span data-lives>3</span>
+            <img src="img/heart.png">
+        </div>
         <main id="Board" data-board>
-
-            <aside class="start-message" data-startIcon>
-                <img src="img/icons8-left-click-50.png">
-                <h4>Click to Start</h4>
-            </aside>
 
             <ul data-brickContainer class="bricks-container" id="bricksContainer"></ul>  
 
@@ -25,8 +26,24 @@
 
             <div data-paddle class='paddle' id="paddle_"></div>
 
+            
+            <aside class="start-message" data-startIcon> 
+                <h4 data-start_text>Start</h4>
+                <div class="click-image">
+                    <img src="img/click (2).png">
+                </div>
+            </aside>
         </main>
-        <p data-text class="text"></p>
+        
+        <section class="gameOver_Section gameOver" data-gameOver_Section>
+            <aside class="gameOver_Container">
+                <h2>Well done!</h2>
+                <p>Score</p>
+                <p data-finalScore>2</p>
+                <button>Play Again</button>
+            </aside>
+        </section>
+
         <script src="main.js" type="module"></script>
         <script src="collisionDetection.js" type="module"></script>
     </body>
