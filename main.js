@@ -192,7 +192,7 @@
   // gameOver
 
   function gameOver() {
-
+    sound.playGameOver();
     document.querySelector('[data-gameOver_Section]').classList.remove('gameOver');
     document.querySelector('[data-finalScore]').innerHTML = board.getScore();
   }

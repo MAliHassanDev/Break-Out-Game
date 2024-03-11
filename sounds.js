@@ -4,11 +4,13 @@ class Sounds {
         this.brickSrc = 'audio/brick.mp3';
         this.wallSrc = 'audio/wall.mp3';
         this.roundoverSrc = 'audio/roundover.mp3'
+        this.gameOverSrc = 'audio/gameOver.wav'
 
         this.paddleSound = new Audio(this.paddleSrc);
         this.brickSound = new Audio(this.brickSrc);
         this.WallSound = new Audio(this.wallSrc);
         this.roundoverSound = new Audio(this.roundoverSrc);
+        this.gameOverSound = new Audio(this.gameOverSrc)
 
         this.paddleSound.onerror = this.handleSoundError;
         this.brickSound.onerror = this.handleSoundError;
@@ -35,6 +37,9 @@ class Sounds {
         this.roundoverSound.play();
     }
 
+    playGameOver(){
+        this.gameOverSound.play();
+    }
 }
 
 let sound = new Sounds();
