@@ -106,6 +106,7 @@
       this.bottomColide = false;
       this.leftCollide = false;
       this.floorCollide = false;
+      this.collideWithEdge = false;
       this.currentPositionX = this.positionX;
       this.currentPositionY = this.positionY;
     }
@@ -166,6 +167,13 @@
       return this.speed;
     }
 
+    getCollideWithEdge(){
+      return this.collideWithEdge;
+    }
+
+    setCollideWithEdge(boolean){
+      this.collideWithEdge = boolean;
+    }
     
   }
 
@@ -189,12 +197,60 @@
 
 
 
+
+
+
+
+
+  function resetBricks(){
+    let hiddenBricks = document.querySelectorAll('.brickHidden');
+    console.log(hiddenBricks)
+    hiddenBricks.forEach(brick => {
+      brick.setAttribute('data-brick','brick')
+      brick.classList.remove('brickHidden');
+    })
+
+    bricks = document.querySelectorAll('[data-brick]');
+  }
+
+
+
+
+  // restart the game if user clicks on the restart button
+  function restartGame(){
+
+    document.querySelector('[data-gameOver_Section]').classList.add('gameOver');
+    gameBoard.addEventListener('click', startGame)
+    resetBallPaddlePosition();
+
+    // reset the sore and lives
+    board.setScore(0);
+    board.setLives(3);
+    document.querySelector('[data-scoreValue]').innerHTML = board.getScore();
+    document.querySelector('[data-lives]').innerHTML = board.getLives();
+
+    // display the start message
+    document.querySelector('[data-startIcon]').classList.remove('hidden');
+    document.querySelector('[data-start_text]').classList.remove('hidden');
+
+    // hide the lives and score
+    document.querySelector('[data-score]').style.opacity = '0';
+    document.querySelector('[data-livesWrapper]').style.opacity = '0'
+
+    resetBricks();
+
+  }
+
   // gameOver
 
   function gameOver() {
-    sound.playGameOver();
+
+    ball.setFloorCollide(true)
     document.querySelector('[data-gameOver_Section]').classList.remove('gameOver');
     document.querySelector('[data-finalScore]').innerHTML = board.getScore();
+
+
+    document.querySelector('[data-playAgain]').addEventListener('click', restartGame)
   }
 
 
@@ -252,6 +308,9 @@
       },2000)
     
     }else{
+      sound.playGameOver();
+      document.querySelector('[data-gameover_text]').innerHTML = 'Try Again!'
+      document.querySelector('[data-lives]').innerHTML = board.getLives();
       gameOver();
     }
     
@@ -269,18 +328,35 @@
 
   function removeBrick(brick){
     brick.removeAttribute('data-brick');
-    brick.classList.add('hidden')
+    brick.classList.add('brickHidden')
 
     // update the bricks arraay
     bricks = document.querySelectorAll('[data-brick]');
     if(bricks.length === 0){
+      sound.playGameWin();
+      ballElement.style.opacity = '0'
+      document.querySelector('[data-gameover_text]').innerHTML = 'Well done!'
       gameOver();
     }
   }
 
-  // changeball direction
 
-  function changeBallDirection(){
+  // change ball direction X 
+  
+  function changeBallDirectionX(){
+    if(ball.getLeftCollide()){
+      ball.setRightCollide(true);
+      ball.setLeftCollide(false)
+    }else{
+      ball.setLeftCollide(true);
+      ball.setRightCollide(false)
+    }
+  }
+
+
+  // changeball direction Y
+
+  function changeBallDirectionY(){
     if(ball.getTopCollide()){
       ball.setTopCollide(false);
       ball.setBottomCollide(true)
@@ -351,7 +427,14 @@
       if(collision.withPaddle()){
         sound.playPaddle();
         paddle.setSideCollide(true);
-        changeBallDirection();
+        changeBallDirectionY();
+      }
+
+      if(ball.getCollideWithEdge()){
+        sound.playPaddle();
+        paddle.setSideCollide(true);
+        changeBallDirectionY();
+        changeBallDirectionX();
       }
     }
 
@@ -361,7 +444,7 @@
       if(collision.withBricks(brick)){
         paddle.setSideCollide(false);
         sound.playBrick()
-        changeBallDirection();
+        changeBallDirectionY();
         updateScore();
         removeBrick(child);
       }
@@ -397,10 +480,11 @@
 
     e.preventDefault();
     document.querySelector('[data-startIcon]').classList.add('hidden');
-
+    
     ball.setFloorCollide(false)
 
     // display the score and lives
+    ballElement.style.opacity = '1'
     document.querySelector('[data-score]').style.opacity = '1';
     document.querySelector('[data-livesWrapper]').style.opacity = '1'
 

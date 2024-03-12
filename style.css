@@ -8,6 +8,10 @@
     src: url('font/BlockStock.ttf')
 }
 
+@font-face {
+    font-family: candy;
+    src: url('font/Chewy.ttf');
+}
 *{
     padding: 0;
     margin: 0;
@@ -112,6 +116,10 @@ main{
     opacity: 0;
 }
 
+.brickHidden{
+    z-index: -1;
+    opacity: 0;
+}
 
 
 .start-message{
@@ -200,22 +208,22 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding: 10px;
 }
 .gameOver_Container h2{
     color: white;
-    font-family: Roboto;
-    font-size: 5rem;
+    font-size: 4.5rem;
     letter-spacing: 2px;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    font-family: candy;
    
 }
 
 .gameOver_Container P:nth-child(2){
     font-family: cartoon;
     color: #d1132d;
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    font-size: 4.5rem;
+    margin-bottom: 2rem;
 }
 
 .gameOver_Container P:nth-child(3){
