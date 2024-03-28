@@ -174,6 +174,26 @@
     setCollideWithEdge(boolean){
       this.collideWithEdge = boolean;
     }
+
+    moveDown(){
+      this.topCollide = true;
+      this.bottomColide = false;
+    }
+
+    moveUp(){
+      this.bottomColide = true;
+      this.topCollide = false;
+    }
+
+    moveLeft(){
+      this.rightCollide = true;
+      this.leftCollide = false;
+    }
+    
+    moveRight(){
+      this.leftCollide = true;
+      this.rightCollide = false;
+    }
     
   }
 
@@ -218,8 +238,9 @@
 
   // restart the game if user clicks on the restart button
   function restartGame(){
-
-    document.querySelector('[data-gameOver_Section]').classList.add('gameOver');
+    
+    document.body.style.cursor = 'all';
+    document.querySelector('[data-gameOver_Section]').classList.add('hidden');
     gameBoard.addEventListener('click', startGame)
     resetBallPaddlePosition();
 
@@ -238,7 +259,6 @@
     document.querySelector('[data-livesWrapper]').style.opacity = '0'
 
     resetBricks();
-
   }
 
   // gameOver
@@ -246,9 +266,9 @@
   function gameOver() {
 
     ball.setFloorCollide(true)
-    document.querySelector('[data-gameOver_Section]').classList.remove('gameOver');
+    document.querySelector('[data-gameOver_Section]').classList.remove('hidden');
     document.querySelector('[data-finalScore]').innerHTML = board.getScore();
-
+    document.body.style.cursor = 'all';
 
     document.querySelector('[data-playAgain]').addEventListener('click', restartGame)
   }
@@ -272,8 +292,10 @@
     let paddleInitialPositionX = parseInt(paddle.getInitialPositionX() - board.getPositionX() - board.getBorder())
     paddle.setPositionX(paddleInitialPositionX);
 
-    console.log(paddleInitialPositionX)
-    paddleElement.style.left = paddle.getPositionX() +'px'
+    paddleElement.style.left = paddle.getPositionX() +'px';
+
+    ball.setBottomCollide(false);
+    ball.setTopCollide(false);
     
   }
 
@@ -438,15 +460,16 @@
       }
     }
 
+    
     // check for collision with bricks
     bricks.forEach(child => {
       let brick = new Figure(child);
       if(collision.withBricks(brick)){
         paddle.setSideCollide(false);
         sound.playBrick()
-        changeBallDirectionY();
         updateScore();
         removeBrick(child);
+        console.log(brick.getHeight())
       }
     })
 

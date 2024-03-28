@@ -42,6 +42,19 @@ class CollisionDetection{
     withBricks(brick){
         if(ball.getPositionX()+ball.getWidth() >= brick.getPositionX()  && ball.getPositionX() <= brick.getPositionX()+brick.getWidth()
          && ball.getPositionY()+ball.getHeight() >= brick.getPositionY() && ball.getPositionY() <= brick.getPositionY()+brick.getHeight()){
+            
+            if(ball.getPositionY() >= brick.getPositionY()+brick.getHeight()/3){
+                ball.moveDown()
+            }else{
+                ball.moveUp();
+            }
+
+            if(ball.getPositionX()+ball.getWidth()/2 <= brick.getPositionX()){
+                ball.moveLeft();
+            }else if(ball.getPositionX()+ball.getWidth()/2 >= brick.getPositionX()+brick.getWidth()){
+                ball.moveRight();
+            }
+
             return true;
         }
     }

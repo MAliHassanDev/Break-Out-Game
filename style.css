@@ -111,10 +111,6 @@ main{
     transition: opacity .5s ease;
 }
 
-.hidden{
-    z-index: -1;
-    opacity: 0;
-}
 
 .brickHidden{
     z-index: -1;
@@ -191,12 +187,13 @@ main{
     height: 100%;
     width: 100%;
     z-index: 100;
-    transition: all 1s linear;
+    transition: all 1s ease;
     background-color: rgba(0, 0, 0, 0.692);
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .gameOver_Container{
     height: 34%;
     width: 20%;
@@ -247,16 +244,10 @@ main{
     transform: scale(.9)
 }
 
-.gameOver{
-    display: none;
-    
+.hidden{
+    z-index: -1;
+    opacity: 0;
 }
-
-
-
-
-
-
 
 
 
