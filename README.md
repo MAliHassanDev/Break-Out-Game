@@ -32,8 +32,26 @@ Breakout is an web based arcade video game. It has a layer of bricks lines at to
   - Multiple rows of destructible blocks
   - Varied block colors for visual appeal
   - Blocks disappear on ball collision
+### Game Features
+- **Scoring System**
+  - Points awarded for each broken block
+  - Score display during gameplay
 
+- **Player Progress**
+  - 3 lives system
+  - Game over when all lives are lost
+  - Level progression system
+## Technical Features
+- **Physics**
+  - Ball reflection mechanics
+  - Wall collision detection
+  - Paddle-ball interaction
 
+- **Audio**
+  - Block destruction sound effects
+  - Paddle hit sounds
+  - Wall collision audio
+  - Game over sound
 ## Tech Stack
 - Html 
 - Javascript
