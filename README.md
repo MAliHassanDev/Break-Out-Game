@@ -1,25 +1,48 @@
-# Secure Life
+# Breakout
 
-Secure Life is a tech-enabled life insurance brokerage that knows innovation and insurance in equal measure.
+Breakout is an web based arcade video game. It has a layer of bricks lines at top of the screen and  the goal is to destroy them all by repeatedly bouncing a ball off a paddle into them without colliding with bottom wall.
 
-## [Live Preview](https://malihassandev.github.io/Secure-Life/)
+## [Live Preview](https://malihassandev.github.io/Break-Out-Game/)
 
-![Secure Live Project demo picture](img/secureLifeDemoImage.png)
+![Breakout live Project demo picture](img/breakoutDemoImage.png)
+
+## Rules of the game
+1. The goal of the game is to **break all the bricks** on the top of the screen by colliding the ball with them.
+2. After successful hit the target brick disappears and number of bricks decreases.
+3. Player can only use paddle at the bottom of board to stop ball hitting the bottom wall of board.
+3. The paddle on the bottom is controlled by mouse and can only be moved horizontally.
+4. Each new game has **three lives**. when the ball hits the bottom wall  the lives count is decreased by one.
+5. Player has to make sure that ball lands on the **rectangular board instead of bottom wall**.
+6. **Game finishes** when the ball hits the bottom wall for the third time.
 
 ## Features
-- Responsive Design
-- Fully adaptive layout across desktop, tablet, and mobile devices
-- WCAG compliant color contrast
-- Brand Integration
-- Consistent brand color scheme implementation
+
+### Core Game Elements
+- **Paddle Control**
+  - Player-controlled paddle at bottom of screen
+  - Horizontal movement (left/right)
+  - Reflects ball at different angles based on impact point
+
+- **Ball Mechanics**
+  - Dynamic ball movement with realistic bouncing
+  - Collision detection with walls, paddle, and blocks
+  - Progressive speed increase for added challenge
+
+- **Block System**
+  - Multiple rows of destructible blocks
+  - Varied block colors for visual appeal
+  - Blocks disappear on ball collision
+
+
 ## Tech Stack
 - Html 
 - Javascript
 - Css
 ## Outcome
-- Implemented brand-consistent typography and design system to strengthen visual identity.
-- Established consistent visual hierarchy to guide users through key insurance offerings.
-- Incorporated trust-building elements like client testimonials and company credentials.
+- Implemented custom collision detection.
+- Improved usage of modular architecture.
+- Learned the usage of DomRect object to bet element coordinates.
+- Implemented conditional rendering based on user actions.
 ## Navigation
-- My next project [Breakout](https://github.com/MAliHassanDev/Break-Out-Game)
-- My previous project [To-Do](https://github.com/MAliHassanDev/To-Do-List)
+- My next project [UserAuth-Vanilla-NodeJs](https://github.com/MAliHassanDev/UserAuth-Vanilla-NodeJs)
+- My previous project [Secure Life](https://github.com/MAliHassanDev/Secure-Life)
