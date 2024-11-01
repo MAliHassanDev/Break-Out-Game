@@ -28,11 +28,11 @@ Breakout is an web based arcade video game. It has a layer of bricks lines at to
   - Collision detection with walls, paddle, and blocks
   - Progressive speed increase for added challenge
 
-- **Block System**
-  - Multiple rows of destructible blocks
-  - Varied block colors for visual appeal
+- **Bricks System**
+  - Multiple rows of destructible bricks
+  - Varied bricks colors for visual appeal
   - Blocks disappear on ball collision
-### Game Features
+
 - **Scoring System**
   - Points awarded for each broken block
   - Score display during gameplay
@@ -41,11 +41,6 @@ Breakout is an web based arcade video game. It has a layer of bricks lines at to
   - 3 lives system
   - Game over when all lives are lost
   - Level progression system
-## Technical Features
-- **Physics**
-  - Ball reflection mechanics
-  - Wall collision detection
-  - Paddle-ball interaction
 
 - **Audio**
   - Block destruction sound effects
