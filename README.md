@@ -17,7 +17,6 @@ Breakout is an web based arcade video game. It has a layer of bricks lines at to
 
 ## Features
 
-### Core Game Elements
 - **Paddle Control**
   - Player-controlled paddle at bottom of screen
   - Horizontal movement (left/right)
@@ -36,6 +35,7 @@ Breakout is an web based arcade video game. It has a layer of bricks lines at to
 - **Scoring System**
   - Points awarded for each broken block
   - Score display during gameplay
+  - Highest Score display at end of game
 
 - **Player Progress**
   - 3 lives system
