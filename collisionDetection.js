@@ -2,8 +2,6 @@ import {ball,paddle,board} from './main.js'
 
 
 class CollisionDetection{
-
-
     withWalls(){
         if(ball.getPositionY() <= board.getTopWall()){
             ball.setTopCollide(true);

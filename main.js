@@ -6,7 +6,7 @@
 
   class Figure {
     constructor(element){
-      this.intitalPositionX = element.getBoundingClientRect().left; 
+      this.initialPositionX = element.getBoundingClientRect().left; 
       this.initialPositionY = element.getBoundingClientRect().top;
       this.height = element.offsetHeight;
       this.width = element.offsetWidth;
@@ -42,7 +42,7 @@
     }
 
     getInitialPositionX(){
-      return this.intitalPositionX;
+      return this.initialPositionX;
     }
 
     getInitialPositionY(){
@@ -103,7 +103,7 @@
       this.radius = element.offsetWidth/2;
       this.topCollide = false;
       this.rightCollide = false;
-      this.bottomColide = false;
+      this.bottomCollide = false;
       this.leftCollide = false;
       this.floorCollide = false;
       this.collideWithEdge = false;
@@ -123,10 +123,10 @@
     }
 
     setBottomCollide(boolean){
-      this.bottomColide = boolean;
+      this.bottomCollide = boolean;
     }
     getBottomCollide(){
-      return this.bottomColide;
+      return this.bottomCollide;
     }
 
     setLeftCollide(boolean){
@@ -163,7 +163,7 @@
     getFloorCollide(){
       return this.floorCollide;
     }
-    getspeed(){
+    getSpeed(){
       return this.speed;
     }
 
@@ -177,11 +177,11 @@
 
     moveDown(){
       this.topCollide = true;
-      this.bottomColide = false;
+      this.bottomCollide = false;
     }
 
     moveUp(){
-      this.bottomColide = true;
+      this.bottomCollide = true;
       this.topCollide = false;
     }
 
@@ -301,7 +301,7 @@
 
 
 
-  // Roud Over 
+  // Round Over 
 
   function roundOver(){
 
@@ -311,7 +311,7 @@
     document.body.style.cursor = 'auto'
     document.removeEventListener('mousemove' ,updatePaddlePosition);
     
-    // again add event listener to  Game bordboard
+    // again add event listener to  Game board
     
 
     // deduct one live
@@ -331,7 +331,7 @@
     
     }else{
       sound.playGameOver();
-      document.querySelector('[data-gameover_text]').innerHTML = 'Try Again!'
+      document.querySelector('[data-game-over-text]').innerHTML = 'Try Again!'
       document.querySelector('[data-lives]').innerHTML = board.getLives();
       gameOver();
     }
@@ -352,12 +352,12 @@
     brick.removeAttribute('data-brick');
     brick.classList.add('brickHidden')
 
-    // update the bricks arraay
+    // update the bricks array
     bricks = document.querySelectorAll('[data-brick]');
     if(bricks.length === 0){
       sound.playGameWin();
       ballElement.style.opacity = '0'
-      document.querySelector('[data-gameover_text]').innerHTML = 'Well done!'
+      document.querySelector('[data-game-over-text]').innerHTML = 'Well done!'
       gameOver();
     }
   }
@@ -376,7 +376,7 @@
   }
 
 
-  // changeball direction Y
+  // changeBall direction Y
 
   function changeBallDirectionY(){
     if(ball.getTopCollide()){
@@ -403,32 +403,32 @@
 
   }
 
-//  udate the current ball position
-  function updateBallPositon(){
+//  update the current ball position
+  function updateBallPosition(){
 
 
-    // vertical movemrnt
+    // vertical movement
     let verticalMovement = 0;
 
     if(!ball.getTopCollide() && ball.getBottomCollide()) {
-      verticalMovement = -ball.getspeed();
+      verticalMovement = -ball.getSpeed();
     } else if(ball.getTopCollide() && !ball.getBottomCollide()){
-      verticalMovement = ball.getspeed();
-    } else verticalMovement = -ball.getspeed();
+      verticalMovement = ball.getSpeed();
+    } else verticalMovement = -ball.getSpeed();
 
     ball.setCurrentPositionY(ball.getCurrentPositionY() + verticalMovement);
     ball.setPositionY(ball.getCurrentPositionY());
 
-    // horizantal moverment
-    let horizantalMovement = 0;
+    // horizontal movement
+    let horizontalMovement = 0;
 
     if(!ball.getRightCollide() && ball.getLeftCollide()){
-      horizantalMovement = ball.getspeed();
+      horizontalMovement = ball.getSpeed();
     } else if(ball.getRightCollide() && !ball.getLeftCollide()){
-      horizantalMovement = -ball.getspeed();
-    } else horizantalMovement = ball.getspeed();
+      horizontalMovement = -ball.getSpeed();
+    } else horizontalMovement = ball.getSpeed();
     
-    ball.setCurrentPositionX(ball.getCurrentPositionX() + horizantalMovement);
+    ball.setCurrentPositionX(ball.getCurrentPositionX() + horizontalMovement);
     ball.setPositionX(ball.getCurrentPositionX());
   }
 
@@ -438,9 +438,9 @@
     if(ball.getFloorCollide()) return;
 
     render();
-    updateBallPositon();
+    updateBallPosition();
 
-    //  chkeck for collisions 
+    //  check for collisions 
     if(collision.withWalls()) sound.playWall();
     
     // check for collision with paddle
@@ -489,10 +489,10 @@
     let clientX = (e.clientX - board.positionX -board.border);
     
     let paddleMovementStartPoint = paddle.getWidth()/2;
-    let paddleMovenentEndPoint = board.width - board.border*2 - paddle.getWidth()/2;
+    let paddleMovementEndPoint = board.width - board.border*2 - paddle.getWidth()/2;
     
     if(clientX <= paddleMovementStartPoint) clientX = paddleMovementStartPoint;
-    else if(clientX >= paddleMovenentEndPoint) clientX = paddleMovenentEndPoint; 
+    else if(clientX >= paddleMovementEndPoint) clientX = paddleMovementEndPoint; 
     paddle.setPositionX(clientX-paddle.getWidth()/2)
   }
  
@@ -518,16 +518,6 @@
 
     requestAnimationFrame(animate);
   }
-
-
-
-
-
-
-
-
-
-
 
 
   
